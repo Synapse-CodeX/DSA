@@ -1,3 +1,5 @@
+Checking bit set or not
+
 LEFT SHIFT 
 if N & (1<<i) != 0
 return True 
@@ -5,3 +7,30 @@ return True
 RIGHT SHIFT
 if N>>i & 1 == 1
 return True
+
+-------------------
+
+SET ith bit
+N | (1<<i) 
+
+-------------------
+
+CLEARING ith bit
+N & ~(1<<i)
+
+-------------------
+
+TOGGLE ith bit
+N ^ (1<<i)
+
+-------------------
+
+REMOVE THE LAST SET BIT
+N & (N-)
+
+-------------------
+
+CHECK IF NUM IS A POWER OF 2
+if N & N-1 == 0
+return True
+
