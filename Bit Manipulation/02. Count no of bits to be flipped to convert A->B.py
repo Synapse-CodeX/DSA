@@ -2,15 +2,12 @@
 
 class Solution:
     def minBitFlips(self, start: int, goal: int) -> int:
-        # Step 1: Find the positions where bits differ using XOR
-        xor_result = start ^ goal
-        
-        # Step 2: Count the number of set bits (1s)
+        ans = start ^ goal
         count = 0
-        while xor_result > 0:
-            # Check if the last bit is 1
-            count += xor_result & 1
-            # Shift right to check the next bit
-            xor_result >>= 1
-            
+        
+        # Explicitly check each of the 32 bit positions
+        for i in range(0, 32):
+            if (ans & (1 << i)) != 0:
+                count += 1
+                
         return count
