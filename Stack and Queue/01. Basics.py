@@ -133,3 +133,205 @@ class StackQueue:
 
     def is_empty(self):
         return not self.st1
+
+
+# INFIX TO POSTFIX CONVERSION
+
+class Solution:
+
+    def precedence(self, ch):
+        if ch == "+" or ch == "-":
+            return 1
+        if ch == "*" or ch == "/":
+            return 2
+        if ch == "^":
+            return 3
+        return 0
+
+    def InfixtoPostfix(self, s):
+        stack = []
+        result = []
+
+        for char in s:
+            if (
+                ("a" <= char <= "z")
+                or ("A" <= char <= "Z")
+                or ("0" <= char <= "9")
+            ):
+                result.append(char)
+            # If character is '(', push it to the stack
+            elif char == "(":
+                stack.append(char)
+            # If character is ')', pop until '(' is encountered
+            elif char == ")":
+                while stack and stack[-1] != "(":
+                    result.append(stack.pop())
+                stack.pop()
+            # If character is an operator
+            else:
+                while stack and self.precedence(
+                    stack[-1]
+                ) >= self.precedence(char):
+                    result.append(stack.pop())
+                stack.append(char)
+
+        # Pop remaining operators from the stack
+        while stack:
+            result.append(stack.pop())
+
+        return "".join(result)
+
+
+# IINFIX TO PREFIX
+# 1. Reverse the infix
+# 2. Infix to Postfix
+# 3.Reverse the answer
+
+def infixToPrefix(self, s):
+    s = s[::-1]
+
+    s = (
+        s.replace("(", "temp")
+        .replace(")", "(")
+        .replace("temp", ")")
+    )
+
+    stack = []
+    result = []
+
+    for char in s:
+        if (
+            ("a" <= char <= "z")
+            or ("A" <= char <= "Z")
+            or ("0" <= char <= "9")
+        ):
+            result.append(char)
+        elif char == "(":
+            stack.append(char)
+        elif char == ")":
+            while stack and stack[-1] != "(":
+                result.append(stack.pop())
+            stack.pop()  # Pop '('
+        else:
+            while stack and self.precedence(
+                stack[-1]
+            ) > self.precedence(char):
+                result.append(stack.pop())
+            stack.append(char)
+
+    while stack:
+        result.append(stack.pop())
+
+    return "".join(result[::-1])
+
+
+# POSTFIX TO INFIX 
+
+class Solution:
+
+    def postToInfix(self, s):
+        # Stack to store operands
+        stack = []
+
+        for char in s:
+            # If character is an operand, push it to the stack
+            if char.isalnum():
+                stack.append(char)
+            else:
+                # Pop two operands
+                operand2 = stack.pop()
+                operand1 = stack.pop()
+
+                # Combine operands with the operator
+                new_expr = f"({operand1}{char}{operand2})"
+
+                # Push the result back onto the stack
+                stack.append(new_expr)
+
+        # The final element in the stack is the infix expression
+        return stack[-1]
+
+
+# PREFIX TO INFIX
+
+class Solution:
+
+    def preToInfix(self, s):
+        # Stack to store operands
+        stack = []
+
+        for char in s[::-1]:
+            # If character is an operand, push it to the stack
+            if char.isalnum():
+                stack.append(char)
+            else:
+                # Pop two operands but with reversed order
+                operand1 = stack.pop()
+                operand2 = stack.pop()
+
+                # Combine operands with the operator
+                new_expr = f"({operand1}{char}{operand2})"
+
+                # Push the result back onto the stack
+                stack.append(new_expr)
+
+        # The final element in the stack is the infix expression
+        return stack[-1]
+
+
+# POSTFIX TO PREFIX
+
+class Solution:
+
+    def postToPre(self, s):
+        # Stack to store operands
+        stack = []
+
+        # Process each character in postfix expression
+        for char in s:
+            # If the character is an operand, push it to the stack
+            if char.isalnum():
+                stack.append(char)
+            else:
+                # Pop two operands from the stack
+                operand2 = stack.pop()
+                operand1 = stack.pop()
+
+                # Combine the operands with the operator in prefix form
+                new_expr = f"{char}{operand1}{operand2}"
+
+                # Push the result back onto the stack
+                stack.append(new_expr)
+
+        # The final element in the stack is the prefix expression
+        return stack[-1]
+
+
+# PREFIX TO POSTFIX
+
+def preToPost(self, s):
+    # Stack to store operands
+    stack = []
+
+    # Traverse the prefix expression from right to left using index
+    n = len(s)
+    for i in range(n - 1, -1, -1):  # Reverse iteration using index
+        char = s[i]
+
+        # If the character is an operand, push it to the stack
+        if char.isalnum():
+            stack.append(char)
+        else:
+            # Pop two operands from the stack
+            operand1 = stack.pop()
+            operand2 = stack.pop()
+
+            # Combine the operands with the operator in postfix form
+            new_expr = operand1 + operand2 + char
+
+            # Push the result back onto the stack
+            stack.append(new_expr)
+
+    # The final element in the stack is the postfix expression
+    return stack[-1]
+
