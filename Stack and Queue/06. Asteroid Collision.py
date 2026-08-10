@@ -1,4 +1,4 @@
-# LEETCODE 735
+# LT 735
 
 from typing import List
 
@@ -25,4 +25,4 @@ class Solution:
                 elif len(st) == 0 or st[-1] < 0:
                     st.append(nums[i])
 
-        return st
+        return st 
