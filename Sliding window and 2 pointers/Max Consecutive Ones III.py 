@@ -1,6 +1,6 @@
-LEETCODE 1004
+# LEETCODE 1004
 
-# 1. Brute Force Approach (O(N²))
+#1. Brute Force Approach (O(N²))
  
 
 def longestOnes_brute(nums, k):
@@ -17,7 +17,7 @@ def longestOnes_brute(nums, k):
     return maxi
 
 
-# 2. Better Sliding Window Approach (O(2N))
+#2. Better Sliding Window Approach (O(2N))
 
 
 def longestOnes_better(nums, k):
@@ -35,7 +35,7 @@ def longestOnes_better(nums, k):
     return maxi
 
 
-# 3. Optimal Sliding Window Approach (O(N))
+#3. Optimal Sliding Window Approach (O(N))
 
 
 def longestOnes_optimal(nums, k):
