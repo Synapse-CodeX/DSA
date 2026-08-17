@@ -1,3 +1,4 @@
+LEETCODE 3 
 
 # 1. Brute Force Approach (Time Complexity: cap O open paren cap N squared close paren)
 # This approach uses nested loops to check every possible substring, utilizing a `set` to track unique characters.
