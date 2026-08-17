@@ -1,6 +1,6 @@
 
 # 1. Brute Force Approach (Time Complexity: cap O open paren cap N squared close paren)
-This approach uses nested loops to check every possible substring, utilizing a `set` to track unique characters.
+# This approach uses nested loops to check every possible substring, utilizing a `set` to track unique characters.
 
 
 maxi = 0
@@ -16,7 +16,7 @@ return maxi
 
 
 # 2. Optimal Sliding Window Approach (Time Complexity: cap O open paren cap N close paren)
-This approach uses a dictionary to store the last seen index of each character, allowing the window to jump forward efficiently when a repeat is found.
+# This approach uses a dictionary to store the last seen index of each character, allowing the window to jump forward efficiently when a repeat is found.
 
 
 my_dict = {}
